@@ -60,12 +60,12 @@ async function loadRoles(){
 };
 
 async function loadEmployees(){
-    const sql = `SELECT * FROM employee`;
+    const sql = `SELECT * FROM employee_view`;
     var results = await doSql(sql)
     var currentList = [];
 
     results.forEach(element => {
-            currentList.push({id: element.id, first_name: element.first_name, last_name: element.last_name, role_id: element.role_id, manager_id: element.manager_id})      
+            currentList.push({id: element.id, first_name: element.first_name, last_name: element.last_name, role: element.title, manager: element.manager_name, salary: element.salary})      
         });
     employeeList = currentList;
 };
@@ -263,7 +263,7 @@ function handleAnswers(data) {
             break;
         case "Update an employee's role":
             update_employee(data.update_employee.id, data.update_employee_role.id);
-            init();
+            
             break;
     }
 
@@ -317,6 +317,7 @@ function update_employee(id, role_id){
             console.log(e)
         }
             console.log("Employee successfully added!");
+            init();
 
 
 }
