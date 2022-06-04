@@ -1,6 +1,3 @@
-CREATE Database employee_tracker;
-USE employee_tracker;
-
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: employee_tracker
@@ -29,7 +26,7 @@ CREATE TABLE `department` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,9 +44,10 @@ CREATE TABLE `employee` (
   `manager_id` int NOT NULL,
   PRIMARY KEY (`id`,`role_id`),
   KEY `id_idx` (`manager_id`),
-  CONSTRAINT `id` FOREIGN KEY (`manager_id`) REFERENCES `employee` (`id`),
-  CONSTRAINT `role_id` FOREIGN KEY (`id`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `role_fk_idx` (`role_id`),
+  CONSTRAINT `emp_fk` FOREIGN KEY (`manager_id`) REFERENCES `employee` (`id`),
+  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +83,7 @@ CREATE TABLE `role` (
   PRIMARY KEY (`id`),
   KEY `department_id_idx` (`department_id`),
   CONSTRAINT `department_id` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,4 +147,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-03 18:31:27
+-- Dump completed on 2022-06-04 16:42:05

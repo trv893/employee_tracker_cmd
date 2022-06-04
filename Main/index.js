@@ -24,7 +24,6 @@ async function loadGlobalData() {
     pRoleList = loadRoles();
     pEmployeeList = loadEmployees();
     await Promise.all([pDepartList, pRoleList, pEmployeeList])
-    console.log(departList);
     createQuestions()
     init();
 };
