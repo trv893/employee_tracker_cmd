@@ -30,6 +30,7 @@ After installing the dependencies in package.json through npm i, run node index.
 ![Example](./ex2.JPG)
 ![Example](./ex3.JPG)
 
+[View Functionality](https://drive.google.com/file/d/1KhOa38b5zpE3v5tMU6mvYUXJNeWCMriC/view)
 ## Features
 
 - add employee
